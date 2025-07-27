@@ -1,0 +1,16 @@
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\bin\Debug\net8.0\BankApp.Application.deps.json
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\bin\Debug\net8.0\BankApp.Application.dll
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\bin\Debug\net8.0\BankApp.Application.pdb
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\bin\Debug\net8.0\BankApp.Domain.dll
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\bin\Debug\net8.0\BankApp.Domain.pdb
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.csproj.AssemblyReference.cache
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.AssemblyInfoInputs.cache
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.AssemblyInfo.cs
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.csproj.CoreCompileInputs.cache
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.sourcelink.json
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp..232A1883.Up2Date
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.dll
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\refint\BankApp.Application.dll
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\BankApp.Application.pdb
+C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Application\obj\Debug\net8.0\ref\BankApp.Application.dll

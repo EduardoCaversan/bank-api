@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BankApp.WebApi.props" />
+</Project>
