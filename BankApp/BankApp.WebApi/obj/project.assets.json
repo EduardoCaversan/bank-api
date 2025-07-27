@@ -1881,6 +1881,7 @@
       "BankApp.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.4",
       "Microsoft.AspNetCore.OpenApi >= 8.0.13",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
       "Refit >= 8.0.0",
       "Swashbuckle.AspNetCore >= 9.0.3"
     ]
@@ -1941,6 +1942,10 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[8.0.13, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[9.0.4, )"
           },
           "Refit": {
             "target": "Package",

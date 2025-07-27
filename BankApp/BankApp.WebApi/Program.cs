@@ -1,89 +1,33 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.OpenApi.Models;
-using Microsoft.IdentityModel.Tokens;
-using Refit;
 using BankApp.WebApi.HttpClients.Compliance;
-using BankApp.WebApi.Handlers.People;
+using BankApp.WebApi.Persistence;
+using BankApp.WebApi.Services;
+using BankApp.WebApi.Services.Compliance;
+using Microsoft.EntityFrameworkCore;
+using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔧 Configuration
-var configuration = builder.Configuration;
+var complianceApiUrl = builder.Configuration["ExternalApis:ComplianceApi"] ?? throw new Exception("Configure ExternalApis:ComplianceApi");
+var complianceAuthApiUrl = complianceApiUrl;
 
-// 🔐 JWT Auth
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.RequireHttpsMetadata = true;
-    options.SaveToken = true;
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ClockSkew = TimeSpan.Zero
-    };
-});
-
-// 🧱 Application Services (IOC, DbContext, Repositories, etc.)
-builder.Services.AddInfrastructure(configuration); // você criará esse método de extensão
-builder.Services.AddApplication(); // idem
-
-// 🌐 Refit - Compliance API
 builder.Services.AddRefitClient<IComplianceApi>()
-    .ConfigureHttpClient(c =>
-    {
-        c.BaseAddress = new Uri(configuration["ComplianceApi:BaseUrl"]!);
-    });
-    
-builder.Services.AddScoped<CreatePersonHandler>();
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri(complianceApiUrl));
 
-// 🎯 Controllers e Swagger
+builder.Services.AddRefitClient<IComplianceAuthApi>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri(complianceAuthApiUrl));
+
+builder.Services.AddSingleton<ComplianceAuthService>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Finance API", Version = "v1" });
-
-    // JWT Auth no Swagger
-    var securityScheme = new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Description = "Insira o token JWT como: Bearer {token}",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT"
-    };
-
-    options.AddSecurityDefinition("Bearer", securityScheme);
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        { securityScheme, new[] { "Bearer" } }
-    });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 📜 Middlewares
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.MapControllers();
 
 app.Run();
