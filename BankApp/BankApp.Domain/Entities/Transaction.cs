@@ -17,6 +17,6 @@ public class Transaction
 
 public enum TransactionType
 {
-    Credit,
-    Debit
+    Credit = 0,
+    Debit = 1
 }
