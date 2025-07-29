@@ -10,3 +10,15 @@ C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Doma
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\refint\BankApp.Domain.dll
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.pdb
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\ref\BankApp.Domain.dll
+C:\projects\bank-api\BankApp\BankApp.Domain\bin\Debug\net8.0\BankApp.Domain.deps.json
+C:\projects\bank-api\BankApp\BankApp.Domain\bin\Debug\net8.0\BankApp.Domain.dll
+C:\projects\bank-api\BankApp\BankApp.Domain\bin\Debug\net8.0\BankApp.Domain.pdb
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.AssemblyInfoInputs.cache
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.AssemblyInfo.cs
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.csproj.CoreCompileInputs.cache
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.sourcelink.json
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.dll
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\refint\BankApp.Domain.dll
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\BankApp.Domain.pdb
+C:\projects\bank-api\BankApp\BankApp.Domain\obj\Debug\net8.0\ref\BankApp.Domain.dll

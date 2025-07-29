@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {}
+    "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+    "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj",
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj",
         "projectName": "BankApp.Application",
-        "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj",
-        "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\obj\\",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
               }
             }
           }
@@ -41,7 +41,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -76,21 +77,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
+    "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
         "projectName": "BankApp.Domain",
-        "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
-        "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\obj\\",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -113,7 +114,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -134,21 +136,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
+    "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
         "projectName": "BankApp.Infrastructure",
-        "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\obj\\",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -160,11 +162,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
-                "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
               },
-              "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
-                "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
               }
             }
           }
@@ -178,7 +180,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -219,21 +222,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {
+    "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
         "projectName": "BankApp.WebApi",
-        "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
-        "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.WebApi\\obj\\",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -245,11 +248,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
-                "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
               },
-              "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj"
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj"
               }
             }
           }
@@ -263,7 +266,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -315,7 +319,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

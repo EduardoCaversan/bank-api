@@ -6342,19 +6342,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\educa\\.nuget\\packages\\": {}
+    "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Tests\\BankApp.Tests.csproj",
+      "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Tests\\BankApp.Tests.csproj",
       "projectName": "BankApp.Tests",
-      "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Tests\\BankApp.Tests.csproj",
-      "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Tests\\obj\\",
+      "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Tests\\BankApp.Tests.csproj",
+      "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -6366,11 +6366,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
-              "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
+            "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+              "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
             },
-            "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
-              "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
+            "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
+              "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
             }
           }
         }
@@ -6384,7 +6384,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -6431,7 +6432,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -6440,7 +6441,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Versão detectada do pacote fora da restrição de dependência: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requer MediatR (>= 11.0.0 && < 12.0.0), mas a versão MediatR 13.0.0 foi resolvida.",
+      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 13.0.0 was resolved.",
       "libraryId": "MediatR",
       "targetGraphs": [
         "net8.0"

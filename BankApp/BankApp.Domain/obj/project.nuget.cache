@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wzl0luh1A8s=",
+  "dgSpecHash": "zDxW4+cUDd4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
+  "projectFilePath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

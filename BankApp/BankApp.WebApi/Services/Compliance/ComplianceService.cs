@@ -29,9 +29,9 @@ public class ComplianceAuthService(IComplianceAuthApi authApi, ILogger<Complianc
                     RefreshToken = _refreshToken
                 });
 
-                _accessToken = refreshResponse.AccessToken;
-                _refreshToken = refreshResponse.RefreshToken;
-                _accessTokenExpiration = DateTime.UtcNow.AddMinutes(50);
+                _accessToken = refreshResponse.Data.AccessToken;
+                _refreshToken = refreshResponse.Data.RefreshToken;
+                _accessTokenExpiration = DateTime.UtcNow.AddMinutes(1);
 
                 _logger.LogInformation("Token de acesso renovado via refresh token.");
                 return _accessToken;
@@ -55,12 +55,12 @@ public class ComplianceAuthService(IComplianceAuthApi authApi, ILogger<Complianc
 
         var tokenResponse = await _authApi.GetTokenAsync(new TokenRequest
         {
-            AuthCode = authCodeResponse.AuthCode
+            AuthCode = authCodeResponse.Data.AuthCode
         });
 
-        _accessToken = tokenResponse.AccessToken;
-        _refreshToken = tokenResponse.RefreshToken;
-        _accessTokenExpiration = DateTime.UtcNow.AddMinutes(50);
+        _accessToken = tokenResponse.Data.AccessToken;
+        _refreshToken = tokenResponse.Data.RefreshToken;
+        _accessTokenExpiration = DateTime.UtcNow.AddMinutes(1);
 
         _logger.LogInformation("Novo token de acesso obtido via login.");
 

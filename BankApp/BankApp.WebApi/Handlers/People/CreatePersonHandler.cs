@@ -1,18 +1,23 @@
+using BankApp.Application.Interfaces;
+using BankApp.Domain.Entities;
 using BankApp.WebApi.DTOs.Compliance;
 using BankApp.WebApi.DTOs.People;
 using BankApp.WebApi.HttpClients.Compliance;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace BankApp.WebApi.Handlers.People;
 
 public class CreatePersonHandler(
     IComplianceApi complianceApi,
     IComplianceAuthApi complianceAuthApi,
-    IConfiguration configuration)
+    IConfiguration configuration,
+    ICustomerRepository customerRepository)
 {
     private readonly IComplianceApi _complianceApi = complianceApi;
     private readonly IComplianceAuthApi _complianceAuthApi = complianceAuthApi;
     private readonly IConfiguration _configuration = configuration;
+    private readonly ICustomerRepository _customerRepository = customerRepository;
 
     private string? _accessToken;
 
@@ -35,10 +40,10 @@ public class CreatePersonHandler(
 
         var tokenResponse = await _complianceAuthApi.GetTokenAsync(new TokenRequest
         {
-            AuthCode = authCodeResponse.AuthCode
+            AuthCode = authCodeResponse.Data.AuthCode
         });
 
-        _accessToken = tokenResponse.AccessToken;
+        _accessToken = tokenResponse.Data.AccessToken;
         return _accessToken;
     }
 
@@ -46,7 +51,7 @@ public class CreatePersonHandler(
     {
         var token = await GetAccessTokenAsync();
 
-        ComplianceValidationResult complianceResponse;
+        CopmplianceValidationApiResult complianceResponse;
 
         if (IsCpf(command.Document))
         {
@@ -65,13 +70,28 @@ public class CreatePersonHandler(
             throw new InvalidOperationException("Documento inválido: não é CPF nem CNPJ.");
         }
 
-        if (complianceResponse.Status != 1)
+        if (complianceResponse.Data.Status != 1)
         {
             throw new InvalidOperationException(
-                $"Pessoa reprovada na verificação de compliance: {complianceResponse.Reason ?? "Sem motivo informado."}");
+                $"Pessoa reprovada na verificação de compliance: {complianceResponse.Data.Reason ?? "Sem motivo informado."}");
         }
 
-        Console.WriteLine($"Pessoa '{command.FullName}' aprovada e registrada com documento {command.Document}.");
+        var existing = await _customerRepository.GetByDocumentAsync(command.Document);
+        if (existing != null)
+            throw new InvalidOperationException("Já existe um cliente com esse documento.");
+
+        var passwordHasher = new PasswordHasher<Customer>();
+        var customer = new Customer
+        {
+            Id = Guid.NewGuid(),
+            Name = command.FullName,
+            Document = RemoveNonDigits(command.Document),
+            Email = command.Email,
+            CreatedAt = DateTimeOffset.UtcNow
+        };
+        customer.Password = passwordHasher.HashPassword(customer, command.Password);
+
+        await _customerRepository.AddAsync(customer);
     }
 
     private static bool IsCpf(string document)

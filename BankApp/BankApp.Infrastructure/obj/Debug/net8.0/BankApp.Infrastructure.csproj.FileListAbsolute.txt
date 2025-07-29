@@ -18,3 +18,23 @@ C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Infr
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.pdb
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.genruntimeconfig.cache
 C:\Users\educa\OneDrive\Área de Trabalho\Projetos\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\ref\BankApp.Infrastructure.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Infrastructure.deps.json
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Infrastructure.runtimeconfig.json
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Infrastructure.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Infrastructure.pdb
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Application.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Domain.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Domain.pdb
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\bin\Debug\net8.0\BankApp.Application.pdb
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.csproj.AssemblyReference.cache
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.AssemblyInfoInputs.cache
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.AssemblyInfo.cs
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.sourcelink.json
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp..640F0D05.Up2Date
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\refint\BankApp.Infrastructure.dll
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.pdb
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\BankApp.Infrastructure.genruntimeconfig.cache
+C:\projects\bank-api\BankApp\BankApp.Infrastructure\obj\Debug\net8.0\ref\BankApp.Infrastructure.dll

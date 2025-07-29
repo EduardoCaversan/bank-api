@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\educa\\.nuget\\packages\\": {}
+    "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
+      "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
       "projectName": "BankApp.Domain",
-      "projectPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
-      "packagesPath": "C:\\Users\\educa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\educa\\OneDrive\\Área de Trabalho\\Projetos\\bank-api\\BankApp\\BankApp.Domain\\obj\\",
+      "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj",
+      "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\educa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -43,7 +43,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -64,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,12 +8,12 @@ namespace BankApp.WebApi.HttpClients.Compliance;
 public interface IComplianceApi
 {
     [Post("/cpf/validate")]
-    Task<ComplianceValidationResult> ValidateCpfAsync(
+    Task<CopmplianceValidationApiResult> ValidateCpfAsync(
         [Body] ComplianceDocumentRequest request,
         [Header("Authorization")] string bearerToken);
 
     [Post("/cnpj/validate")]
-    Task<ComplianceValidationResult> ValidateCnpjAsync(
+    Task<CopmplianceValidationApiResult> ValidateCnpjAsync(
         [Body] ComplianceDocumentRequest request,
         [Header("Authorization")] string bearerToken);
 
@@ -36,11 +36,11 @@ public interface IComplianceApi
 public interface IComplianceAuthApi
 {
     [Post("/auth/code")]
-    Task<AuthCodeResponse> GetAuthCodeAsync([Body] AuthCodeRequest request);
+    Task<AuthCodeApiResponse> GetAuthCodeAsync([Body] AuthCodeRequest request);
 
     [Post("/auth/token")]
-    Task<TokenResponse> GetTokenAsync([Body] TokenRequest request);
+    Task<TokenApiResponse> GetTokenAsync([Body] TokenRequest request);
 
     [Post("/auth/refresh")]
-    Task<RefreshTokenResponse> RefreshTokenAsync([Body] RefreshTokenRequest request);
+    Task<RefreshTokenApiResponse> RefreshTokenAsync([Body] RefreshTokenRequest request);
 }
