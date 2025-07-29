@@ -1,4 +1,5 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,12 +35,12 @@ public class CardController(ICardRepository repository) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(Card card)
+    public async Task<IActionResult> CreateAsync(CreateOrUpdateCardCommand card)
     {
         try
         {
-            await _repository.AddAsync(card);
-            return CreatedAtAction(nameof(GetById), new { id = card.Id }, card);
+            var newCard = await _repository.AddAsync(card);
+            return CreatedAtAction(nameof(GetById), new { newCard.Id }, newCard);
         }
         catch (InvalidOperationException ex)
         {
@@ -48,15 +49,12 @@ public class CardController(ICardRepository repository) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(Guid id, Card updated)
+    public async Task<IActionResult> UpdateAsync(Guid id, CreateOrUpdateCardCommand updated)
     {
-        if (id != updated.Id)
-            return BadRequest("ID do corpo não corresponde ao ID da URL.");
-
         try
         {
-            await _repository.UpdateAsync(updated);
-            return NoContent();
+            var updatedCard = await _repository.UpdateAsync(id, updated);
+            return CreatedAtAction(nameof(GetById), new { updatedCard.Id }, updatedCard);
         }
         catch (InvalidOperationException ex)
         {

@@ -28,12 +28,12 @@ public class AccountController(IAccountRepository repository) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(Account account)
+    public async Task<IActionResult> CreateAsync(CreateOrUpdateAccountCommand account)
     {
         try
         {
-            await _repository.AddAsync(account);
-            return CreatedAtAction(nameof(GetById), new { id = account.Id }, account);
+            var newAccount = await _repository.AddAsync(account);
+            return CreatedAtAction(nameof(GetById), new { id = newAccount.Id }, newAccount);
         }
         catch (InvalidOperationException ex)
         {
@@ -42,15 +42,12 @@ public class AccountController(IAccountRepository repository) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(Guid id, Account updated)
+    public async Task<IActionResult> UpdateAsync(Guid id, CreateOrUpdateAccountCommand updated)
     {
-        if (id != updated.Id)
-            return BadRequest("ID do corpo não corresponde ao ID da URL.");
-
         try
         {
-            await _repository.UpdateAsync(updated);
-            return NoContent();
+            var updatedAccount = await _repository.UpdateAsync(id, updated);
+            return CreatedAtAction(nameof(GetById), new { id = updatedAccount.Id }, updatedAccount);
         }
         catch (InvalidOperationException ex)
         {
@@ -61,12 +58,9 @@ public class AccountController(IAccountRepository repository) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        var account = await _repository.GetByIdAsync(id);
-        if (account is null) return NotFound();
-
         try
         {
-            await _repository.DeleteAsync(account);
+            await _repository.DeleteAsync(id);
             return NoContent();
         }
         catch (InvalidOperationException ex)

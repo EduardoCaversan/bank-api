@@ -6,8 +6,8 @@ namespace BankApp.Application.Interfaces;
 public interface IAccountRepository
 {
     Task<Account?> GetByIdAsync(Guid id);
-    Task AddAsync(Account account);
-    Task UpdateAsync(Account account);
-    Task DeleteAsync(Account account);
+    Task<Account> AddAsync(CreateOrUpdateAccountCommand account);
+    Task<Account> UpdateAsync(Guid id, CreateOrUpdateAccountCommand account);
+    Task DeleteAsync(Guid id);
     Task<PaginatedResponse<Account>> GetAllPaginatedAsync(int itemsPerPage, int currentPage);
 }

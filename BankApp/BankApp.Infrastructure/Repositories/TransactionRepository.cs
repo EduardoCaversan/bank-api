@@ -40,7 +40,7 @@ public class TransactionRepository(BankAppDbContext context) : ITransactionRepos
         await _context.Transactions.Include(t => t.Account)
                                    .FirstOrDefaultAsync(t => t.Id == id);
 
-    public async Task AddAsync(Transaction transaction)
+    public async Task<Transaction> AddAsync(CreateOrUpdateTransactionCommand transaction)
     {
         var account = await _context.Accounts.FindAsync(transaction.AccountId)
             ?? throw new InvalidOperationException("Conta não encontrada.");
@@ -56,17 +56,16 @@ public class TransactionRepository(BankAppDbContext context) : ITransactionRepos
         else
             account.Balance += transaction.Value;
 
-        transaction.CreatedAt = DateTime.UtcNow;
-        transaction.IsReversal = false;
-
-        _context.Transactions.Add(transaction);
+        var newTransaction = new Transaction(transaction.Value, transaction.Description, transaction.Type, transaction.AccountId);
+        _context.Transactions.Add(newTransaction);
         _context.Accounts.Update(account);
         await _context.SaveChangesAsync();
+        return newTransaction;
     }
 
-    public async Task UpdateAsync(Transaction transaction)
+    public async Task UpdateAsync(Guid id, CreateOrUpdateTransactionCommand transaction)
     {
-        var existing = await _context.Transactions.FindAsync(transaction.Id)
+        var existing = await _context.Transactions.FindAsync(id)
             ?? throw new InvalidOperationException("Transação não encontrada.");
 
         if (existing.IsReversal)
@@ -74,9 +73,9 @@ public class TransactionRepository(BankAppDbContext context) : ITransactionRepos
         throw new NotSupportedException("Atualização de transações não é permitida.");
     }
 
-    public async Task DeleteAsync(Transaction transaction)
+    public async Task DeleteAsync(Guid id)
     {
-        var existing = await _context.Transactions.FindAsync(transaction.Id)
+        var existing = await _context.Transactions.FindAsync(id)
             ?? throw new InvalidOperationException("Transação não encontrada.");
 
         if (existing.IsReversal)
@@ -103,16 +102,7 @@ public class TransactionRepository(BankAppDbContext context) : ITransactionRepos
         if (reverseType == TransactionType.Debit && account.Balance < original.Value)
             throw new InvalidOperationException("Saldo insuficiente para reverter.");
 
-        var reverseTransaction = new Transaction
-        {
-            Id = Guid.NewGuid(),
-            AccountId = account.Id,
-            CreatedAt = DateTime.UtcNow,
-            Description = $"Reversão: {original.Description}",
-            Type = reverseType,
-            Value = original.Value,
-            IsReversal = false
-        };
+        var reverseTransaction = new Transaction(original.Value, original.Description, reverseType, original.AccountId);
 
         if (reverseType == TransactionType.Debit)
             account.Balance -= original.Value;

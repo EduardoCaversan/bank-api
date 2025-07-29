@@ -5,6 +5,7 @@ using BankApp.WebApi.DTOs.People;
 using BankApp.WebApi.HttpClients.Compliance;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
+using BankApp.Domain.DTOs;
 
 namespace BankApp.WebApi.Handlers.People;
 
@@ -80,14 +81,12 @@ public class CreatePersonHandler(
         if (existing != null)
             throw new InvalidOperationException("Já existe um cliente com esse documento.");
 
-        var passwordHasher = new PasswordHasher<Customer>();
-        var customer = new Customer
+        var passwordHasher = new PasswordHasher<CreateCustomerCommand>();
+        var customer = new CreateCustomerCommand
         {
-            Id = Guid.NewGuid(),
             Name = command.FullName,
             Document = RemoveNonDigits(command.Document),
             Email = command.Email,
-            CreatedAt = DateTimeOffset.UtcNow
         };
         customer.Password = passwordHasher.HashPassword(customer, command.Password);
 

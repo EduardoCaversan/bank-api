@@ -42,35 +42,42 @@ public class AccountRepository(BankAppDbContext context) : IAccountRepository
         await _context.Accounts.Include(a => a.Transactions)
                                .FirstOrDefaultAsync(a => a.Id == id);
 
-    public async Task AddAsync(Account account)
+    public async Task<Account> AddAsync(CreateOrUpdateAccountCommand account)
     {
         var exists = await _context.Accounts
             .AnyAsync(a => a.Branch == account.Branch && a.CustomerId == account.CustomerId);
         if (exists)
             throw new InvalidOperationException("Já existe uma conta com esse número para este cliente.");
 
-        _context.Accounts.Add(account);
+
+        var newAccount = new Account(account.Branch, account.AccountNumber, account.Balance, account.CustomerId);
+        _context.Accounts.Add(newAccount);
         await _context.SaveChangesAsync();
+        return newAccount;
     }
 
-    public async Task UpdateAsync(Account account)
+    public async Task<Account> UpdateAsync(Guid id, CreateOrUpdateAccountCommand account)
     {
-        var exists = await _context.Accounts
-            .AnyAsync(a => a.Branch == account.Branch && a.CustomerId == account.CustomerId);
-        if (exists)
-            throw new InvalidOperationException("Já existe uma conta com esse número para este cliente.");
+        var existing = await _context.Accounts.FindAsync(id)
+            ?? throw new InvalidOperationException("Cartão não encontrado.");
+        if (account.Balance < 0)
+            throw new InvalidOperationException("Saldo deve ser maior ou igual a zero.");
+        if (existing.CustomerId != account.CustomerId)
+            throw new InvalidOperationException("Não é possível transferir contas entre clientes.");
 
-        _context.Accounts.Update(account);
+        existing.Branch = account.Branch;
+        existing.AccountNumber = account.AccountNumber;
+        existing.Balance = account.Balance;
+        existing.CustomerId = account.CustomerId;
+
+        _context.Accounts.Update(existing);
         await _context.SaveChangesAsync();
+        return existing;
     }
 
-    public async Task DeleteAsync(Account account)
+    public async Task DeleteAsync(Guid id)
     {
-        var exists = await _context.Accounts
-            .AnyAsync(a => a.Branch == account.Branch && a.CustomerId == account.CustomerId);
-        if (exists)
-            throw new InvalidOperationException("Já existe uma conta com esse número para este cliente.");
-
+        var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id) ?? throw new InvalidOperationException("Já existe uma conta com esse número para este cliente.");
         _context.Accounts.Remove(account);
         await _context.SaveChangesAsync();
     }

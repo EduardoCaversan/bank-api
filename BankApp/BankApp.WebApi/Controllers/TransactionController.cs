@@ -1,4 +1,5 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,12 +28,12 @@ public class TransactionController(ITransactionRepository repository) : Controll
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(Transaction transaction)
+    public async Task<IActionResult> CreateAsync(CreateOrUpdateTransactionCommand transaction)
     {
         try
         {
-            await _repository.AddAsync(transaction);
-            return CreatedAtAction(nameof(GetById), new { id = transaction.Id }, transaction);
+            var newTransaction = await _repository.AddAsync(transaction);
+            return CreatedAtAction(nameof(GetById), new { id = newTransaction.Id }, newTransaction);
         }
         catch (InvalidOperationException ex)
         {
@@ -41,14 +42,11 @@ public class TransactionController(ITransactionRepository repository) : Controll
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(Guid id, Transaction updated)
+    public async Task<IActionResult> UpdateAsync(Guid id, CreateOrUpdateTransactionCommand updated)
     {
-        if (id != updated.Id)
-            return BadRequest("ID do corpo não corresponde ao ID da URL.");
-
         try
         {
-            await _repository.UpdateAsync(updated);
+            await _repository.UpdateAsync(id, updated);
             return NoContent();
         }
         catch (InvalidOperationException ex)
@@ -60,12 +58,9 @@ public class TransactionController(ITransactionRepository repository) : Controll
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        var transaction = await _repository.GetByIdAsync(id);
-        if (transaction is null) return NotFound();
-
         try
         {
-            await _repository.DeleteAsync(transaction);
+            await _repository.DeleteAsync(id);
             return NoContent();
         }
         catch (InvalidOperationException ex)

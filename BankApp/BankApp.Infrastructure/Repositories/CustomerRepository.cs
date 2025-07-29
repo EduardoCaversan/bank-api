@@ -1,4 +1,5 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using BankApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -17,47 +18,19 @@ public class CustomerRepository(BankAppDbContext context) : ICustomerRepository
                                 .ThenInclude(a => a.Transactions)
                                 .FirstOrDefaultAsync(c => c.Id == id);
 
-    public async Task AddAsync(Customer customer)
+    public async Task<Customer> AddAsync(CreateCustomerCommand customer)
     {
-        var exists = await _context.Customers.AnyAsync(c => c.Id == customer.Id);
-        if (!exists)
-            throw new InvalidOperationException("Cliente não encontrado.");
-
         ValidateCustomer(customer);
-        
         if (await _context.Customers.AnyAsync(c => c.Document == customer.Document))
             throw new InvalidOperationException("Já existe um cliente com esse documento.");
 
         if (await _context.Customers.AnyAsync(c => c.Email == customer.Email))
             throw new InvalidOperationException("Já existe um cliente com esse e-mail.");
 
-        _context.Customers.Add(customer);
+        var newCustomer = new Customer(customer.Name, customer.Email, customer.Document, customer.Password);
+        _context.Customers.Add(newCustomer);
         await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(Customer customer)
-    {
-        ValidateCustomer(customer);
-
-        var existing = await _context.Customers.AsNoTracking()
-            .FirstOrDefaultAsync(c => c.Id == customer.Id) ?? throw new InvalidOperationException("Cliente não encontrado.");
-        if (await _context.Customers.AnyAsync(c => c.Email == customer.Email && c.Id != customer.Id))
-            throw new InvalidOperationException("Já existe outro cliente com esse e-mail.");
-
-        if (await _context.Customers.AnyAsync(c => c.Document == customer.Document && c.Id != customer.Id))
-            throw new InvalidOperationException("Já existe outro cliente com esse documento.");
-
-        _context.Customers.Update(customer);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(Customer customer)
-    {
-        var exists = await _context.Customers.AnyAsync(c => c.Id == customer.Id);
-        if (!exists)
-            throw new InvalidOperationException("Cliente não encontrado.");
-        _context.Customers.Remove(customer);
-        await _context.SaveChangesAsync();
+        return newCustomer;
     }
 
     public async Task<Customer?> GetByDocumentAsync(string document) =>
@@ -66,7 +39,8 @@ public class CustomerRepository(BankAppDbContext context) : ICustomerRepository
     public async Task<Customer?> GetByEmailAsync(string email) =>
         await _context.Customers.FirstOrDefaultAsync(c => c.Email == email);
 
-    private static void ValidateCustomer(Customer customer)
+
+    private static void ValidateCustomer(CreateCustomerCommand customer)
     {
         if (string.IsNullOrWhiteSpace(customer.Name))
             throw new InvalidOperationException("O nome do cliente é obrigatório.");

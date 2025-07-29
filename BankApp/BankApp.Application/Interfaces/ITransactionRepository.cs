@@ -7,8 +7,8 @@ public interface ITransactionRepository
 {
     Task<PaginatedResponse<Transaction>> GetAllPaginatedAsync(int itemsPerPage = 10, int currentPage = 1, TransactionType? type = null);
     Task<Transaction?> GetByIdAsync(Guid id);
-    Task AddAsync(Transaction transaction);
-    Task UpdateAsync(Transaction transaction);
-    Task DeleteAsync(Transaction transaction);
+    Task<Transaction> AddAsync(CreateOrUpdateTransactionCommand transaction);
+    Task UpdateAsync(Guid id, CreateOrUpdateTransactionCommand transaction);
+    Task DeleteAsync(Guid id);
     Task RevertAsync(Guid transactionId);
 }

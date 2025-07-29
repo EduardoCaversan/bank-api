@@ -80,7 +80,7 @@ public class CardRepository(BankAppDbContext context) : ICardRepository
         };
     }
 
-    public async Task AddAsync(Card card)
+    public async Task<CardMasked> AddAsync(CreateOrUpdateCardCommand card)
     {
         var account = await _context.Accounts.FindAsync(card.AccountId)
             ?? throw new InvalidOperationException("Conta associada ao cartão não encontrada.");
@@ -98,20 +98,30 @@ public class CardRepository(BankAppDbContext context) : ICardRepository
 
         if (string.IsNullOrWhiteSpace(card.Number) || card.Number.Length < 4)
             throw new InvalidOperationException("Número do cartão inválido.");
-
-        _context.Cards.Add(card);
+        var newCard = new Card(card.Number, card.CVV, card.Type, card.AccountId);
+        _context.Cards.Add(newCard);
         await _context.SaveChangesAsync();
+        return new CardMasked
+        {
+            Id = newCard.Id,
+            Type = newCard.Type,
+            Number = newCard.Number.Length > 4 ? newCard.Number[^4..] : newCard.Number,
+            CVV = newCard.CVV,
+            AccountId = newCard.AccountId,
+            CreatedAt = newCard.CreatedAt,
+            UpdatedAt = newCard.UpdatedAt
+        };
     }
 
-    public async Task UpdateAsync(Card card)
+    public async Task<CardMasked> UpdateAsync(Guid id, CreateOrUpdateCardCommand card)
     {
-        var existing = await _context.Cards.FindAsync(card.Id)
+        var existing = await _context.Cards.FindAsync(id)
             ?? throw new InvalidOperationException("Cartão não encontrado.");
 
         if (card.Type == "physical")
         {
             var physicalExists = await _context.Cards
-                .AnyAsync(c => c.Id != card.Id && c.AccountId == card.AccountId && c.Type == "physical");
+                .AnyAsync(c => c.Id != id && c.AccountId == card.AccountId && c.Type == "physical");
             if (physicalExists)
                 throw new InvalidOperationException("Já existe outro cartão físico para esta conta.");
         }
@@ -125,6 +135,16 @@ public class CardRepository(BankAppDbContext context) : ICardRepository
 
         _context.Cards.Update(existing);
         await _context.SaveChangesAsync();
+        return new CardMasked
+        {
+            Id = existing.Id,
+            Type = existing.Type,
+            Number = existing.Number.Length > 4 ? existing.Number[^4..] : existing.Number,
+            CVV = existing.CVV,
+            AccountId = existing.AccountId,
+            CreatedAt = existing.CreatedAt,
+            UpdatedAt = existing.UpdatedAt
+        };
     }
 
     public async Task DeleteAsync(Card card)
