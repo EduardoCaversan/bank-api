@@ -1,4 +1,5 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,11 @@ public class AccountController(IAccountRepository repository) : ControllerBase
     private readonly IAccountRepository _repository = repository;
 
     [HttpGet]
-    public async Task<IActionResult> Get() => Ok(await _repository.GetAllAsync());
+    public async Task<IActionResult> Get([FromQuery] int itemsPerPage = 10, [FromQuery] int currentPage = 1)
+    {
+        PaginatedResponse<Account> accounts = await _repository.GetAllPaginatedAsync(itemsPerPage, currentPage);
+        return Ok(accounts);
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)

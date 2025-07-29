@@ -1,7 +1,7 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using BankApp.Infrastructure.Data;
-using BankApp.Infrastructure.Data.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApp.Infrastructure.Repositories;
@@ -10,17 +10,36 @@ public class CardRepository(BankAppDbContext context) : ICardRepository
 {
     private readonly BankAppDbContext _context = context;
 
-    public async Task<IEnumerable<Card>> GetAllAsync() =>
-        await _context.Cards.Include(c => c.Account).ToListAsync();
+    public async Task<PaginatedResponse<Card>> GetAllPaginatedAsync(int itemsPerPage = 10, int currentPage = 1)
+    {
+        var query = _context.Cards.Include(c => c.Account).AsQueryable();
+        var totalItems = await query.CountAsync();
+        var data = await query.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+
+        return new PaginatedResponse<Card>
+        {
+            Data = data,
+            Pagination = new PaginationMetadata
+            {
+                ItemsPerPage = itemsPerPage,
+                CurrentPage = currentPage,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)itemsPerPage)
+            }
+        };
+    }
 
     public async Task<Card?> GetByIdAsync(Guid id) =>
         await _context.Cards.Include(c => c.Account)
                             .FirstOrDefaultAsync(c => c.Id == id);
 
-    public async Task<IEnumerable<CardMaskedDto>> GetAllMaskedAsync()
+    public async Task<PaginatedResponse<CardMasked>> GetAllMaskedAsync(int itemsPerPage = 10, int currentPage = 1)
     {
-        var cards = await _context.Cards.ToListAsync();
-        return cards.Select(c => new CardMaskedDto
+        var query = _context.Cards.Include(c => c.Account).AsQueryable();
+        var totalItems = await query.CountAsync();
+        var data = await query.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+
+        var maskedCards = data.Select(c => new CardMasked
         {
             Id = c.Id,
             Type = c.Type,
@@ -30,14 +49,26 @@ public class CardRepository(BankAppDbContext context) : ICardRepository
             CreatedAt = c.CreatedAt,
             UpdatedAt = c.UpdatedAt
         });
+
+        return new PaginatedResponse<CardMasked>
+        {
+            Data = maskedCards,
+            Pagination = new PaginationMetadata
+            {
+                ItemsPerPage = itemsPerPage,
+                CurrentPage = currentPage,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)itemsPerPage)
+            }
+        };
     }
 
-    public async Task<CardMaskedDto?> GetMaskedByIdAsync(Guid id)
+    public async Task<CardMasked?> GetMaskedByIdAsync(Guid id)
     {
         var card = await _context.Cards.FirstOrDefaultAsync(c => c.Id == id);
         if (card is null) return null;
 
-        return new CardMaskedDto
+        return new CardMasked
         {
             Id = card.Id,
             Type = card.Type,

@@ -13,7 +13,11 @@ public class TransactionController(ITransactionRepository repository) : Controll
     private readonly ITransactionRepository _repository = repository;
 
     [HttpGet]
-    public async Task<IActionResult> Get() => Ok(await _repository.GetAllAsync());
+    public async Task<IActionResult> Get([FromQuery] int itemsPerPage = 10, [FromQuery] int currentPage = 1, [FromQuery] TransactionType? type = null)
+    {
+        var result = await _repository.GetAllPaginatedAsync(itemsPerPage, currentPage, type);
+        return Ok(result);
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)

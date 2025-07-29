@@ -1,6 +1,6 @@
-namespace BankApp.Infrastructure.Data.DTOs;
+namespace BankApp.Domain.DTOs;
 
-public class CardMaskedDto
+public class CardMasked
 {
     public Guid Id { get; set; }
     public string Type { get; set; } = string.Empty;

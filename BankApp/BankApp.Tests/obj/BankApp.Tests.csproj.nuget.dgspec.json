@@ -140,6 +140,92 @@
         }
       }
     },
+    "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
+        "projectName": "BankApp.Infrastructure",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
+              },
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Refit.HttpClientFactory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\projects\\bank-api\\BankApp\\BankApp.Tests\\BankApp.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -167,6 +253,12 @@
               },
               "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj": {
                 "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Domain\\BankApp.Domain.csproj"
+              },
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj"
+              },
+              "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj"
               }
             }
           }
@@ -224,6 +316,103 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
+        "projectName": "BankApp.WebApi",
+        "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\BankApp.WebApi.csproj",
+        "packagesPath": "C:\\Users\\EduardoCaversandaSil\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\bank-api\\BankApp\\BankApp.WebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\EduardoCaversandaSil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Application\\BankApp.Application.csproj"
+              },
+              "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj": {
+                "projectPath": "C:\\projects\\bank-api\\BankApp\\BankApp.Infrastructure\\BankApp.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

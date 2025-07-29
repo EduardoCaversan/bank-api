@@ -1,4 +1,5 @@
 using BankApp.Application.Interfaces;
+using BankApp.Domain.DTOs;
 using BankApp.Domain.Entities;
 using BankApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,31 @@ public class TransactionRepository(BankAppDbContext context) : ITransactionRepos
 {
     private readonly BankAppDbContext _context = context;
 
-    public async Task<IEnumerable<Transaction>> GetAllAsync() =>
-        await _context.Transactions.Include(t => t.Account).ToListAsync();
+    public async Task<PaginatedResponse<Transaction>> GetAllPaginatedAsync(int itemsPerPage = 10, int currentPage = 1, TransactionType? type = null)
+    {
+        var query = _context.Transactions.Include(t => t.Account).AsQueryable();
+
+        if (type.HasValue)
+            query = query.Where(t => t.Type == type.Value);
+
+        var totalItems = await query.CountAsync();
+        var data = await query.OrderByDescending(t => t.CreatedAt)
+                              .Skip((currentPage - 1) * itemsPerPage)
+                              .Take(itemsPerPage)
+                              .ToListAsync();
+
+        return new PaginatedResponse<Transaction>
+        {
+            Data = data,
+            Pagination = new PaginationMetadata
+            {
+                ItemsPerPage = itemsPerPage,
+                CurrentPage = currentPage,
+                TotalItems = totalItems,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)itemsPerPage)
+            }
+        };
+    }
 
     public async Task<Transaction?> GetByIdAsync(Guid id) =>
         await _context.Transactions.Include(t => t.Account)

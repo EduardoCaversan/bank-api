@@ -13,7 +13,18 @@ public class CardController(ICardRepository repository) : ControllerBase
     private readonly ICardRepository _repository = repository;
 
     [HttpGet]
-    public async Task<IActionResult> Get() => Ok(await _repository.GetAllAsync());
+    public async Task<IActionResult> Get([FromQuery] int itemsPerPage = 10, [FromQuery] int currentPage = 1)
+    {
+        var paginatedCards = await _repository.GetAllPaginatedAsync(itemsPerPage, currentPage);
+        return Ok(paginatedCards);
+    }
+
+    [HttpGet("masked")]
+    public async Task<IActionResult> GetMasked([FromQuery] int itemsPerPage = 10, [FromQuery] int currentPage = 1)
+    {
+        var paginatedCards = await _repository.GetAllMaskedAsync(itemsPerPage, currentPage);
+        return Ok(paginatedCards);
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
